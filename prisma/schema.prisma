@@ -9,3 +9,67 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id             Int      @id @default(autoincrement())
+  first_name     String
+  last_name      String
+  username       String   @unique
+  email          String   @unique
+}
+
+model Outfit {
+  id                       Int      @id @default(autoincrement())
+  name                     String
+  weather_compatibility    String
+  occasion                 String   @unique
+  style_type               String   @unique
+  img_url                  String
+  forMen                   Boolean
+  category_Id              String
+  color                    String
+  body_type                String
+}
+
+model User_Preferences {
+  id                       Int      @id @default(autoincrement())
+  user_Id                  Int
+  weather_compatibility    String
+  occasion                 String   @unique
+  style_type               String   @unique
+  img_url                  String
+  forMen                   Boolean
+  category_Id              String
+  color                    String
+  body_type                String
+}
+
+model Pants {
+  id                       Int      @id @default(autoincrement())
+  weather_compatibility    String
+  occasion                 String   @unique
+  style_type               String   @unique
+  img_url                  String
+  forMen                   Boolean
+  category_Id              String
+  color                    String
+  body_type                String
+}
+
+model Shirts {
+  id                       Int      @id @default(autoincrement())
+  weather_compatibility    String
+  occasion                 String   @unique
+  style_type               String   @unique
+  img_url                  String
+  forMen                   Boolean
+  category_Id              String
+  color                    String
+  body_type                String
+}
+
+model Categories {
+  id                       Int      @id @default(autoincrement())
+  name                     String
+  
+}
