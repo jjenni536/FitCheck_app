@@ -16,14 +16,15 @@ model User {
   last_name      String
   username       String   @unique
   email          String   @unique
+  preferences    User_Preferences @relation(fields: [id], references: [user_Id])
 }
 
 model Outfit {
   id                       Int      @id @default(autoincrement())
   name                     String
   weather_compatibility    String
-  occasion                 String   @unique
-  style_type               String   @unique
+  occasion                 String   
+  style_type               String   
   img_url                  String
   forMen                   Boolean
   category_Id              String
@@ -33,22 +34,22 @@ model Outfit {
 
 model User_Preferences {
   id                       Int      @id @default(autoincrement())
-  user_Id                  Int
-  weather_compatibility    String
-  occasion                 String   @unique
-  style_type               String   @unique
-  img_url                  String
+  user_Id                  Int      @unique
+  weather_compatibility    String?
+  occasion                 String?  
+  style_type               String
   forMen                   Boolean
-  category_Id              String
-  color                    String
-  body_type                String
+  category_Id              String?
+  color                    String?
+  body_type                String?
+  user                     User?    
 }
 
 model Pants {
   id                       Int      @id @default(autoincrement())
   weather_compatibility    String
-  occasion                 String   @unique
-  style_type               String   @unique
+  occasion                 String
+  style_type               String
   img_url                  String
   forMen                   Boolean
   category_Id              String
@@ -59,8 +60,8 @@ model Pants {
 model Shirts {
   id                       Int      @id @default(autoincrement())
   weather_compatibility    String
-  occasion                 String   @unique
-  style_type               String   @unique
+  occasion                 String   
+  style_type               String   
   img_url                  String
   forMen                   Boolean
   category_Id              String
